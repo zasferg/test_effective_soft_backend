@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_list.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>Список заказов</title>
+</head>
+<body>
+    <h1>Список заказов</h1>
+    <ul>
+        {% for order in orders %}
+            <li>
+                <a href="{% url 'order_detail' order.pk %}">Заказ №{{ order.id }} - Стол №{{ order.table_number }}</a> - {{ order.status }} - {{ order.total_price }} руб.
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'order_create' %}">Создать новый заказ</a>
+    <a href="{% url 'dishes_list' %}">Посмотреть список блюд</a>
+</body>
+</html>

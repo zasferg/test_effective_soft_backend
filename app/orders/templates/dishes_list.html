@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_list.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Список блюд</title>
+</head>
+<body>
+    <h1>Список блюд</h1>
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                <a href="{% url 'dishes_detail' dish.pk %}">{{ dish.dish }}</a> - {{ dish.price }} руб.
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'order_list' %}">Назад к списку заказов</a>
+    <a href="{% url 'dishes_create' %}">Добавить новое блюдо</a>
+</body>
+</html>

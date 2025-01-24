@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_detail.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Отчет о выручке</title>
+</head>
+<body>
+    <h1>Отчет о выручке за смену</h1>
+    <p>Общая выручка: {{ report }} руб.</p>
+    <a href="{% url 'order_list' %}">Назад к списку заказов</a>
+</body>
+</html>

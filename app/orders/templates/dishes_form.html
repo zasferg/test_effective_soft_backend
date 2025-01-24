@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_form.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Созддание блюда</title>
+</head>
+<body>
+    <h1>{{view.title}}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+            {{ field }}
+            {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'dishes_list' %}">Назад к списку блюд</a>
+</body>
+</html>

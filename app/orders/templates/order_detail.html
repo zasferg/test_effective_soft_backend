@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_detail.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Детали заказа</title>
+</head>
+<body>
+    <h1>Детали заказа №{{ order.id }}</h1>
+    <p>Номер стола: {{ order.table_number }}</p>
+    <p>Статус: {{ order.status }}</p>
+    <h2>Блюда в заказе:</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.dish }} - {{ item.price }} руб.</li>
+        {% endfor %}
+    </ul>
+    <p>Общая стоимость: {{ order.total_price }} руб.</p>
+    <p>Создан: {{ order.created_at }}</p>
+    <a href="{% url 'order_update' order.id %}">Редактировать заказ</a>
+    <a href="{% url 'order_list' %}">Назад к списку заказов</a>
+</body>
+</html>

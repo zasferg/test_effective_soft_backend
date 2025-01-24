@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_detail.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Детали блюда</title>
+</head>
+<body>
+    <h1>{{ dish.dish }}</h1>
+    <p>Описание: {{ dish.descr }}</p>
+    <p>Цена: {{ dish.price }} руб.</p>
+    <a href="{% url 'dishes_list' %}">Назад к списку блюд</a>
+    <a href="{% url 'dishes_update' dish.id %}">Редактировать заказ</a>
+</body>
+</html>

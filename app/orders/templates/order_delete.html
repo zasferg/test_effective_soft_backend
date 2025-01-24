@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{% static 'styles_form.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Удалить заказ</title>
+</head>
+<body>
+    <h1>Удалить заказ №{{ order.id }}</h1>
+    <p>Вы уверены, что хотите удалить этот заказ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+        <a href="{% url 'order_detail' order.pk %}">Отмена</a>
+    </form>
+</body>
+</html>
